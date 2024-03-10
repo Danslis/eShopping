@@ -9,6 +9,6 @@ public interface IProductRepository
     Task<IEnumerable<Product>> GetProducntByName(string name);
     Task<IEnumerable<Product>> GetProducntByBrand(string brand);
     Task<Product> CreateProduct(Product product);
-    Task<Product> UpdateProduct(Product product);
-    Task<Product> DeleteProduct(string id);
+    Task<bool> UpdateProduct(Product product);
+    Task<bool> DeleteProduct(string id);
 }
