@@ -21,8 +21,7 @@ public class Startup
     }
 
     public void ConfigureServices(IServiceCollection services)
-    {       
-        services.AddControllers();       
+    {      
         services.AddApiVersioning();
         services.AddHealthChecks()
              .AddMongoDb(Configuration["DatabaseSettings:ConnectionString"], "Catalog  Mongo Db Health Check",
@@ -37,6 +36,7 @@ public class Startup
         services.AddScoped<IProductRepository, ProductRepository>();
         services.AddScoped<IBrandRepository, ProductRepository>();
         services.AddScoped<ITypesRepository, ProductRepository>();
+        services.AddControllers();
     }
 
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -47,7 +47,8 @@ public class Startup
             app.UseSwagger();
             app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Catalog.API v1"));
         }
-        
+
+        app.UseHttpsRedirection();
         app.UseRouting();       
         app.UseStaticFiles();
         app.UseAuthorization();
