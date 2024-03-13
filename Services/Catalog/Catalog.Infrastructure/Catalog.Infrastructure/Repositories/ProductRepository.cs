@@ -2,6 +2,7 @@
 using Catalog.Core.Repositories;
 using Catalog.Core.Specs;
 using Catalog.Infrastructure.Data;
+using MongoDB.Bson;
 using MongoDB.Driver;
 using System.Xml.Linq;
 
@@ -18,6 +19,24 @@ public class ProductRepository : IProductRepository, IBrandRepository, ITypesRep
 
     public async Task<IEnumerable<Product>> GetProducts(CatalogSpecParams catalogSpecParams)
     {
+        var builder = Builders<Product>.Filter;
+        var filter = builder.Empty;
+        if (!string.IsNullOrEmpty(catalogSpecParams.Search))
+        {
+            var searchFilter = builder.Regex(x => x.Name, new BsonRegularExpression(catalogSpecParams.Search));
+            filter &= searchFilter;
+        }
+        if (!string.IsNullOrEmpty(catalogSpecParams.BrandId))
+        {
+            var brandFilter = builder.Eq(x => x.Brands.Id, catalogSpecParams.BrandId);
+            filter &= brandFilter;
+        }
+        if (!string.IsNullOrEmpty(catalogSpecParams.TypeId))
+        {
+            var typeFilter = builder.Eq(x => x.Types.Id, catalogSpecParams.TypeId);
+            filter &= typeFilter;
+        }
+
         return await _context
           .Products
           .Find(p => true)
