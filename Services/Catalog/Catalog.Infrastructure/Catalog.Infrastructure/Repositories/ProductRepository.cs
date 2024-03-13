@@ -1,5 +1,6 @@
 ﻿using Catalog.Core.Entities;
 using Catalog.Core.Repositories;
+using Catalog.Core.Specs;
 using Catalog.Infrastructure.Data;
 using MongoDB.Driver;
 using System.Xml.Linq;
@@ -15,7 +16,7 @@ public class ProductRepository : IProductRepository, IBrandRepository, ITypesRep
         _context = context;
     }
 
-    public async Task<IEnumerable<Product>> GetProducts()
+    public async Task<IEnumerable<Product>> GetProducts(CatalogSpecParams catalogSpecParams)
     {
         return await _context
           .Products
