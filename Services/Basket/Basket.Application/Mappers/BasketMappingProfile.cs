@@ -1,12 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using AutoMapper;
+using Basket.Application.Responses;
+using Basket.Core.Entities;
 
-namespace Basket.Application.Mappers
+namespace Basket.Application.Mappers;
+
+public class BasketMappingProfile : Profile
 {
-    internal class BasketMappingProfile
+    public BasketMappingProfile()
     {
+        CreateMap<ShoppingCart, ShoppingCartResponse>().ReverseMap();
+        CreateMap<ShoppingCartItem, ShoppingCartItemResponse>().ReverseMap();       
     }
 }
