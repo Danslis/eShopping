@@ -20,7 +20,7 @@ services:
     restart: always
     ports:
       - "8080:8000"
-      - "9090:9000"
+      - "9092:9000"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - portainer_data:/data
@@ -43,9 +43,9 @@ services:
   basket.api:
     container_name: basket.api
     environment:
-      - ASPNETCORE_ENVIRONMENT=Development#     
+      - ASPNETCORE_ENVIRONMENT=Development
     depends_on:
       - basketdb     
     ports:
-      - "9001:8080"
+      - "9004:8080"
  
