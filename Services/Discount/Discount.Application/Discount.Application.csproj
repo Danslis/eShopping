@@ -16,10 +16,13 @@
 	<PackageReference Include="MediatR" Version="11.1.0" />
    </ItemGroup>
 
+   <ItemGroup>
+	<Protobuf Include="Protos\discount.proto" GrpcServices="Server" />
+   </ItemGroup>
+
   <ItemGroup>
     <Folder Include="Commands\" />
     <Folder Include="Handlers\" />
-    <Folder Include="Mapper\" />
     <Folder Include="Queries\" />
     <Folder Include="Protos\" />
   </ItemGroup>
