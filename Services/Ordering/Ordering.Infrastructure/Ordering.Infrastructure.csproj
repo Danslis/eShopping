@@ -18,4 +18,9 @@
 	</PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Extensions\" />
+    <Folder Include="Migrations\" />
+  </ItemGroup>
+
 </Project>
