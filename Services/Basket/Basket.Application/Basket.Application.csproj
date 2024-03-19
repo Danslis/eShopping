@@ -10,10 +10,6 @@
     <ProjectReference Include="..\Basket.Core\Basket.Core.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="GrpcService\" />
-  </ItemGroup>
-
 	<ItemGroup>
 		<PackageReference Include="AspNetCore.HealthChecks.Redis" Version="6.0.4" />
 		<PackageReference Include="AspNetCore.HealthChecks.UI.Client" Version="6.0.5" />		
@@ -22,6 +18,18 @@
 		<PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
 		<PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
 		<PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="6.5.0" />
+		<PackageReference Include="Grpc.AspNetCore" Version="2.51.0" />
 	</ItemGroup>
+	
+	<ItemGroup>
+        <Protobuf Include="..\..\Discount\Discount.Application\Protos\discount.proto" GrpcServices="Client">
+            <Link>Protos\discount.proto</Link>
+        </Protobuf>
+    </ItemGroup>
+	<ItemGroup>
+		<Protobuf Include="..\..\Discount\Discount.Application\Protos\discount.proto" GrpcServices="Client">
+			<Link>Protos\discount.proto</Link>
+		</Protobuf>
+	</ItemGroup>	
 
 </Project>
