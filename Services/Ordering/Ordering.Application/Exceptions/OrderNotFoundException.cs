@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace Ordering.Application.Exceptions;
 
-namespace Ordering.Application.Exceptions
+public class OrderNotFoundException : ApplicationException
 {
-    internal class OrderNotFoundException
+    public OrderNotFoundException(string name, object key) : base($"Entity {name} - {key} is not found.")
     {
+
     }
 }
