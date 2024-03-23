@@ -5,7 +5,9 @@ using Catalog.Infrastructure.Repositories;
 using HealthChecks.UI.Client;
 using MediatR;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
+using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
 using Microsoft.OpenApi.Models;
 using System.Reflection;
@@ -37,7 +39,13 @@ public class Startup
         services.AddScoped<IProductRepository, ProductRepository>();
         services.AddScoped<IBrandRepository, ProductRepository>();
         services.AddScoped<ITypesRepository, ProductRepository>();
-        services.AddControllers();
+        var userPolicy = new AuthorizationPolicyBuilder()
+           .RequireAuthenticatedUser()
+           .Build();
+        services.AddControllers(config =>
+        {
+            config.Filters.Add(new AuthorizeFilter(userPolicy));
+        });
         services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             .AddJwtBearer(options =>
              {
@@ -57,7 +65,7 @@ public class Startup
 
         app.UseHttpsRedirection();
         app.UseRouting();       
-        app.UseStaticFiles();
+        app.UseStaticFiles();       
         app.UseAuthorization();
         app.UseEndpoints(endpoints =>
         {
