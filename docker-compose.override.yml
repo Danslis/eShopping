@@ -36,6 +36,13 @@ services:
     ports:
       - "1433:1433"
 
+  rabbitmq:
+    container_name: rabbitmq
+    restart: always
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+
   pgadmin:
     container_name: pgadmin
     environment:
@@ -78,8 +85,10 @@ services:
       - ASPNETCORE_ENVIRONMENT=Development
       - "CacheSettings__ConnectionString=basketdb:6379"
       - "GrpcSettings__DiscountUrl=http://discount.api"
+      - "EventBusSettings__HostAddress=amqp://guest:guest@rabbitmq:5672"
     depends_on:
-      - basketdb     
+      - basketdb
+      - rabbitmq 
     ports:
       - "9004:8080"
 
