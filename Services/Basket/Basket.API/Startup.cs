@@ -29,6 +29,7 @@ public class Startup
 
     public void ConfigureServices(IServiceCollection services)
     {
+
         services.AddControllers();
         services.AddApiVersioning(options =>
         {
@@ -84,7 +85,7 @@ public class Startup
         services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             .AddJwtBearer(options =>
             {
-                options.Authority = "https://localhost:9009";
+                options.Authority = "https://id-local.eshopping.com:44344";
                 options.Audience = "Basket";
             });
 
@@ -92,11 +93,12 @@ public class Startup
 
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IApiVersionDescriptionProvider provider)
     {
+        var nginxPath = "/basket";
         if (env.IsDevelopment())
         {
             app.UseDeveloperExceptionPage();
             app.UseSwagger();
-            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Basket.API v1"));
+            app.UseSwaggerUI(c => c.SwaggerEndpoint($"{nginxPath}/swagger/v1/swagger.json", "Basket.API v1"));;
         }
 
         app.UseHttpsRedirection();

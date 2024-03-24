@@ -11,7 +11,7 @@ services:
      - discount.api
      - ordering.api
     ports:
-     - "44344:443"
+     - "44344:44344"
     
   catalogdb:
     container_name: catalogdb
