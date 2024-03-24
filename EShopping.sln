@@ -53,9 +53,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EventBus.Messages", "Infras
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ApiGateways", "ApiGateways", "{DA484768-3B9C-4F69-BBC7-FB7D07B52AC7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ocelot.ApiGateway", "ApiGateways\Ocelot.ApiGateway\Ocelot.ApiGateway.csproj", "{F4811AFA-377B-4FC6-8743-805E0D8D2FCA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ocelot.ApiGateway", "ApiGateways\Ocelot.ApiGateway\Ocelot.ApiGateway.csproj", "{F4811AFA-377B-4FC6-8743-805E0D8D2FCA}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EShopping.Identity", "Infrastructure\EShopping.Identity\EShopping.Identity.csproj", "{D4C6A816-864B-4844-90B9-CAC360C8E090}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "nginx", "nginx", "{32105D11-ED7C-451C-BC5A-067C39D3A749}"
+	ProjectSection(SolutionItems) = preProject
+		nginx.Dockerfile = nginx.Dockerfile
+		nginx.local.conf = nginx.local.conf
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -171,6 +177,7 @@ Global
 		{32D3DA0E-48DE-4EC6-BECD-902A79A674A7} = {43AE81DA-6951-4F65-914C-7459D0B9E884}
 		{F4811AFA-377B-4FC6-8743-805E0D8D2FCA} = {DA484768-3B9C-4F69-BBC7-FB7D07B52AC7}
 		{D4C6A816-864B-4844-90B9-CAC360C8E090} = {43AE81DA-6951-4F65-914C-7459D0B9E884}
+		{32105D11-ED7C-451C-BC5A-067C39D3A749} = {DA484768-3B9C-4F69-BBC7-FB7D07B52AC7}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {733A08A3-C8CC-48C7-BB96-E3806F908BBC}
