@@ -52,7 +52,8 @@ public class CatalogController : ApiController
             return Ok(result);
         }
         catch (Exception e)
-        {           
+        {
+            _logger.LogError(e, "An Exception has occured: {Exception}");
             throw;
         }
     }
